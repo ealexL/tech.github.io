@@ -25,8 +25,8 @@ public class ObserverManager impelments ObserverManagerInterface{
     private int count; //观察者的总数
     private List<Observer> observers = new ArrayList<Observer>(); //缓存观察者
     private static int i= 0;
-    private ObserverManagerInterface mObserverManagerInterface;
-    public ObserverManagerInterface getInstance(){
+    private static ObserverManagerInterface mObserverManagerInterface;
+    public static ObserverManagerInterface getInstance(){
 		if (mObserverManagerInterface == null) {
 			synchronized (ObserverManager.class) {
 				if (mObserverManagerInterface == null)
