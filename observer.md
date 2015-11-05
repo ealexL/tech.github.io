@@ -14,7 +14,7 @@ public interface ObserverManagerInterface{
     void notifyObserver(int id);
     void notifyObserver(Observer observer);
     void notifyObserver();
-    void removeObserver(Observer observer);
+    boolean removeObserver(Observer observer);
     void clearObserver();
     int countObserver();
 }
