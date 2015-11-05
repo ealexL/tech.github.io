@@ -23,12 +23,16 @@ public interface ObserverManagerInterface{
 ```
 public abstract class ObserverManager impelments ObserverManagerInterface{
     int count; //观察者的总数
-    HashMap<Integer,Observer>> observers = new HashMap<Integer,Observer>(); //缓存观察者
+    HashMap<Integer,Observer> observers = new HashMap<Integer,Observer>(); //缓存观察者
     private static int i= 0;
     public abstract void addObserver(Observer observer){
         observers.put(i++,observer);
     };
-    public void notifyObserver(int id){};
+    public void notifyObserver(int id){
+    	for(Observer observer : observer){
+        	if(obser)
+        }
+    };
     public void notifyObserver(Observer observer){};
     public void notifyObserver(){};
     public void removeObserver(Observer observer){};
