@@ -21,22 +21,44 @@ public interface ObserverManagerInterface{
 ````
 #####3.实现
 ```
-public abstract class ObserverManager impelments ObserverManagerInterface{
-    int count; //观察者的总数
-    HashMap<Integer,Observer> observers = new HashMap<Integer,Observer>(); //缓存观察者
+public class ObserverManager impelments ObserverManagerInterface{
+    private int count; //观察者的总数
+    private List<Observer> observers = new ArrayList<Observer>(); //缓存观察者
     private static int i= 0;
+    private ObserverManagerInterface mObserverManagerInterface;
+    public ObserverManagerInterface getInstance(){
+		if (mObserverManagerInterface == null) {
+			synchronized (ObserverManager.class) {
+				if (mObserverManagerInterface == null)
+					mObserverManagerInterface = new ObserverManager();
+			}
+		}
+		return mObserverManagerInterface;
+    }
     public abstract void addObserver(Observer observer){
-        observers.put(i++,observer);
+    	if(observer != null && observers != null)
+        	observers.add(observer);
     };
-    public void notifyObserver(int id){
-    	for(Observer observer : observer){
-        	if(obser)
+    public void notifyObserver(Observer observerE){
+    	for(Observer observer : observers){
+        	if(observer.equel(observerE)){
+            	observer.update();
+                //observer.update(parameter);
+            }
         }
     };
-    public void notifyObserver(Observer observer){};
-    public void notifyObserver(){};
-    public void removeObserver(Observer observer){};
-    public void clearObserver(){};
+    public void notifyObserver(){
+    	for(Observer observer : observers){
+        	observer.update();
+            //observer.update(parameter);
+        }
+    };
+    public boolean removeObserver(Observer observer){
+        return observers.remove(observer);
+    };
+    public void clearObserver(){
+    	observers.clean();
+    };
     public int countObserver(){
         count = observers.size();
     return count;
