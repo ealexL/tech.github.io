@@ -30,6 +30,7 @@
     }
 ####3.静态代码块
 #####静态代码块是在构造代码块基础上加上静态标志，*需要注意的是：静态代码块只执行第一次，之后的实例化以及方法的调用都不执行，直到程序被kill*，如：
+```
 	public static class ExampleClass{
     	public ExampleClass(){
         	System.out.println("这是构造函数");
@@ -51,21 +52,22 @@
         	System.out.println("这是静态方法");
         }
     }
-
+```
 ####3.同步代码块
 ######常在java的多线程程序中为保证线程安全而使用，这部分另开篇写
 
 ####4.不同代码块的执行顺序
 #####1)无继承
    a)类的启动方式---直接实例化：
-	
-    ExampleClass mExampleClass = new ExampleClass();
-   	
-    mExampleClass.normalMethod();
+```
+ExampleClass mExampleClass = new ExampleClass();
+mExampleClass.normalMethod();
+```
 静态代码块-->构造代码块-->构造函数-->普通的代码块-->这在普通的代码块外面一层
    b)类的启动方式---调用静态方法：
-	
-    ExampleClass.staticNormalMethod();
+```
+ExampleClass.staticNormalMethod();
+```
 静态代码块-->静态方法(并不执行构造代码块和构造函数)
 
 #####2)继承,如下：
